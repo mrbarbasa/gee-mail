@@ -1,11 +1,145 @@
 <html>
 	<head>
+		<script src="js/lib/jquery-1.11.1.min.js"></script>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+		<script>
+			$(document).ready(function() {
+
+				var gee = window.geemails;
+
+				function getInboxTotal() {
+					$("#inboxTotal").text(gee.length);
+				}
+
+				function fillRows(sectionRows, mail) {
+					return sectionRows.append("<li>" 
+						+ mail.sender 
+						+ "---" 
+						+ mail.subject 
+						+ "---" 
+						+ mail.date 
+						+ "---"
+						+ mail.section
+						+ "</li>"
+					);
+				}
+
+				function populateRows() {
+					var importantRows = $("<ul></ul>"),
+							starredRows = $("<ul></ul>"),
+							otherRows = $("<ul></ul>");
+					for (var i = 0, l = gee.length; i < l; i++) {
+						switch(gee[i].section) {
+							case "important":
+								importantRows = fillRows(importantRows, gee[i]);
+								$("#importantContent").append(importantRows);
+								break;
+							case "starred":
+								starredRows = fillRows(starredRows, gee[i]);
+								$("#starredContent").append(starredRows);
+								break;
+							case "other":
+								otherRows = fillRows(otherRows, gee[i]);
+								$("#otherContent").append(otherRows);
+								break;
+							default:
+								console.log("Gee, the array is empty.");
+						}
+					}
+				}
+
+				getInboxTotal();
+				populateRows();
+
+			});
+		</script>
 	</head>
 	<body>
-		<div class="container" id="main">
-			Build Me!
-		</div>
+		<header>
+			<h1>GeeMail</h1>
+		</header>
+		<section>
+			<div class="container" id="sidebar">
+				<!-- <span id="compose">Compose</span> -->
+				<h3>Inbox (<span id="inboxTotal"></span>)</h3>
+			</div>
+			<div class="container" id="main">
+
+				<div class="sectionPanel">
+					<!-- Another div wraps around sectionHeader -->
+					<div class"sectionHeader" id="importantHeader">
+						<div class="sectionTitle" id="importantTitle">
+							<h3>
+								<span class="shouldBeImage" style="float: left;">-</span>
+								<span>Important</span>
+							</h3>
+						</div>
+						<!-- <div class="sectionOther" id="importantOther">
+							<div>
+								<span id="importantCounts">
+									<b>1</b>-<b>4</b> of <b>8</b>
+								</span>
+							</div>
+							<div id="importantOptions">
+								<span class="shouldBeImage">-</span>
+							</div>
+						</div> -->
+					</div>
+					<div class="sectionContent" id="importantContent">
+						<!-- Another div wraps around ul -->
+					</div>
+				</div>
+
+				<div class="sectionPanel">
+					<div class"sectionHeader" id="starredHeader">
+						<div class="sectionTitle" id="starredTitle">
+							<h3>
+								<span class="shouldBeImage" style="float: left;">-</span>
+								<span>Starred</span>
+							</h3>
+						</div>
+						<!-- <div class="sectionOther" id="starredOther">
+							<div>
+								<span id="starredCounts">
+									<b>1</b>-<b>4</b> of <b>8</b>
+								</span>
+							</div>
+							<div id="starredOptions">
+								<span class="shouldBeImage">-</span>
+							</div>
+						</div> -->
+					</div>
+					<div class="sectionContent" id="starredContent">
+					</div>
+				</div>
+
+				<div class="sectionPanel">
+					<div class"sectionHeader" id="allElseHeader">
+						<div class="sectionTitle" id="allElseTitle">
+							<h3>
+								<span class="shouldBeImage" style="float: left;">-</span>
+								<span>Everything else</span>
+							</h3>
+						</div>
+						<!-- <div class="sectionOther" id="allElseOther">
+							<div>
+								<span id="allElseCounts">
+									<b>1</b>-<b>4</b> of <b>8</b>
+								</span>
+							</div>
+							<div id="allElseOptions">
+								<span class="shouldBeImage">-</span>
+							</div>
+						</div> -->
+					</div>
+					<div class="sectionContent" id="otherContent">
+					</div>
+				</div>
+
+			</div>
+		</section>
+		<footer>
+		</footer>
 	</body>
 </html>
