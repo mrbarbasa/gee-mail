@@ -1,4 +1,4 @@
-section {
+/*section {
 	position: relative;
 	width: 960px;
 }
@@ -7,31 +7,11 @@ section {
 	position: relative;
 	float: left;
 	width: 202px;
-	/*position: absolute;
-	left: 0;*/
 }
 
 #main {
 	float: left;
-	/*position: absolute;
-	left: 20%;*/
 }
-
-
-/*.container {
-	width: 80%;
-}*/
-
-/*.sectionHeader {
-	position: relative;
-	margin-bottom: 10px;
-	width: 768px;
-	overflow: auto;
-}*/
-
-/*.sectionHeader {
-	float: left;
-}*/
 
 .sectionTitle {
 	float: left;
@@ -44,4 +24,4 @@ section {
 
 .sectionContent {
 	float: left;
-}
+}*/
