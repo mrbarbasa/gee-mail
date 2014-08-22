@@ -12,8 +12,8 @@
 					$("#inboxTotal").text(gee.length);
 				}
 
-				function fillRows(sectionRows, mail) {
-					return sectionRows.append("<li>" 
+				function addRow(sectionRows, mail) {
+					sectionRows.append("<li>" 
 						+ mail.sender 
 						+ "---" 
 						+ mail.subject 
@@ -32,15 +32,15 @@
 					for (var i = 0, l = gee.length; i < l; i++) {
 						switch(gee[i].section) {
 							case "important":
-								importantRows = fillRows(importantRows, gee[i]);
+								addRow(importantRows, gee[i]);
 								$("#importantContent").append(importantRows);
 								break;
 							case "starred":
-								starredRows = fillRows(starredRows, gee[i]);
+								addRow(starredRows, gee[i]);
 								$("#starredContent").append(starredRows);
 								break;
 							case "other":
-								otherRows = fillRows(otherRows, gee[i]);
+								addRow(otherRows, gee[i]);
 								$("#otherContent").append(otherRows);
 								break;
 							default:
