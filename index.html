@@ -1,10 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<title>GeeMail</title>
 		<script src="js/lib/jquery-1.11.1.min.js"></script>
 		<script src="js/lib/jquery-ui/jquery-ui.min.js"></script>
 		<script src="js/lib/moment.min.js"></script>
 		<script src="js/mail-generator.js"></script>
-		<link href="js/lib/jquery-ui/jquery-ui.min.css"></script>
+		<link href="js/lib/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet" media="screen">
 		<script>
 			$(document).ready(function() {
@@ -18,15 +21,15 @@
 				function addRow(sectionRows, mail) {
 					sectionRows.append("<li>"
 						+ "<h4>" 
-						+ mail.sender 
+						+ "<span class='sender'>" + mail.sender + "</span>"
 						+ "---" 
-						+ mail.subject 
+						+ "<span class='subject'>" + mail.subject + "</span>"
 						+ "---" 
-						+ moment(mail.date).format("LL") // August 21, 2014
+						+ "<span class='date'>" + moment(mail.date).format("LL") + "</span>"
 						+ "</h4>"
-						+ "<div>" 
+						+ "<div><p>" 
 						+ mail.body 
-						+ "</div>"
+						+ "</p></div>"
 						+ "</li>"
 					);
 				}
@@ -55,24 +58,25 @@
 					}
 				}
 
+				function initAccordions() {
+					var options = { 
+						animate: 200,
+						collapsible: true, // Collapse the active section
+						active: false, // Collapse all panels by default
+						heightStyle: "content"
+					};
+					$(".sectionPanel").accordion(options);
+					$(".sectionContent ul").accordion(options);
+				}
+
 				getInboxTotal();
 				populateRows();
+				initAccordions();
 				// setTimeout(function() {
 				// 	var message = getNewMessage();
 				// 	window.geemails.push(message);
 				// }, 3000);
-
-				$(".sectionContent ul").accordion({ 
-					animate: 200,
-					collapsible: true, // Collapse the active section
-					active: false // Collapse all panels by default
-				});
-				$(".sectionPanel").accordion({ 
-					animate: 200,
-					collapsible: true,
-					active: false
-				});
-
+				
 			});
 		</script>
 	</head>
@@ -91,10 +95,7 @@
 					<!-- Another div wraps around sectionHeader -->
 					<div class"sectionHeader" id="importantHeader">
 						<div class="sectionTitle" id="importantTitle">
-							<h3>
-								<span class="shouldBeImage" style="float: left;">-</span>
-								<span>Important</span>
-							</h3>
+							<span>Important</span>
 						</div>
 						<!-- <div class="sectionOther" id="importantOther">
 							<div>
@@ -115,10 +116,7 @@
 				<div class="sectionPanel">
 					<div class"sectionHeader" id="starredHeader">
 						<div class="sectionTitle" id="starredTitle">
-							<h3>
-								<span class="shouldBeImage" style="float: left;">-</span>
-								<span>Starred</span>
-							</h3>
+							<span>Starred</span>
 						</div>
 						<!-- <div class="sectionOther" id="starredOther">
 							<div>
@@ -138,10 +136,7 @@
 				<div class="sectionPanel">
 					<div class"sectionHeader" id="allElseHeader">
 						<div class="sectionTitle" id="allElseTitle">
-							<h3>
-								<span class="shouldBeImage" style="float: left;">-</span>
-								<span>Everything else</span>
-							</h3>
+							<span>Everything else</span>
 						</div>
 						<!-- <div class="sectionOther" id="allElseOther">
 							<div>

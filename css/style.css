@@ -25,3 +25,43 @@
 .sectionContent {
 	float: left;
 }*/
+
+
+/* Accordion styles */
+
+.sectionTitle h3,
+.sectionContent ul li h4 {
+	cursor: pointer;
+}
+
+.sectionContent ul {
+	list-style: none;
+}
+
+.sectionPanel .ui-accordion-header {
+	font-size: 15px;
+}
+
+.sectionContent ul .ui-accordion-header {
+	font-size: 14px;
+}
+
+.ui-accordion-content {
+	font-size: 14px;
+	font-family: Arial, sans-serif;
+}
+
+
+/* Mail item header styles */
+
+/*.sender {
+
+}
+
+.subject {
+
+}
+
+.date {
+
+}*/
