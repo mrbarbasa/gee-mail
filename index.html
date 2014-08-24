@@ -42,20 +42,20 @@
 						switch(gee[i].section) {
 							case "important":
 								addRow(importantRows, gee[i]);
-								$("#importantContent").append(importantRows);
 								break;
 							case "starred":
 								addRow(starredRows, gee[i]);
-								$("#starredContent").append(starredRows);
 								break;
 							case "other":
 								addRow(otherRows, gee[i]);
-								$("#otherContent").append(otherRows);
 								break;
 							default:
 								console.log("Gee, the array is empty.");
 						}
 					}
+					$("#importantContent").append(importantRows);
+					$("#starredContent").append(starredRows);
+					$("#otherContent").append(otherRows);
 				}
 
 				function initAccordions() {
@@ -69,13 +69,44 @@
 					$(".sectionContent ul").accordion(options);
 				}
 
+				function refreshInbox() {
+					var mail = gee[gee.length - 1];
+					// console.log(gee.length + " --- " + mail.section);
+					switch(mail.section) {
+						case "important":
+							addRow($("#importantContent ul"), mail);
+							$("#importantContent ul").accordion("refresh");
+							break;
+						case "starred":
+							addRow($("#starredContent ul"), mail);
+							$("#starredContent ul").accordion("refresh");
+							break;
+						case "other":
+							addRow($("#otherContent ul"), mail);
+							$("#otherContent ul").accordion("refresh");
+							break;
+						default:
+							console.log("This email has not been marked.");
+					}
+				}
+
+				function generateMessages() {
+					// Generate a new email
+					var message = getNewMessage();
+					// Add it to the array of emails
+					gee.push(message);
+					// Set the Inbox total to the new array length
+					getInboxTotal();
+					// Display the newly generated email in its section
+					refreshInbox();
+					// Recursively call this function after 3 seconds
+					setTimeout(generateMessages, 3000);
+				}
+
 				getInboxTotal();
 				populateRows();
 				initAccordions();
-				// setTimeout(function() {
-				// 	var message = getNewMessage();
-				// 	window.geemails.push(message);
-				// }, 3000);
+				setTimeout(generateMessages, 3000);
 				
 			});
 		</script>
