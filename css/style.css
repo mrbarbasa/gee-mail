@@ -65,3 +65,11 @@
 .date {
 
 }*/
+
+.unread h4 span {
+	color: blue;
+}
+
+.read h4 span {
+	font-weight: normal;
+}

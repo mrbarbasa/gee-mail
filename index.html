@@ -14,13 +14,22 @@
 
 				var gee = window.geemails;
 
+				// Sort the array by increasing chronological order
+				// Later, as rows are prepended, emails that come later in
+				//   the array (more recent emails) will show up at the top
+				gee.sort(function(a, b) {
+					return new Date(a.date) - new Date(b.date);
+				});
+
 				function getInboxTotal() {
 					$("#inboxTotal").text(gee.length);
 				}
 
 				function addRow(sectionRows, mail) {
-					sectionRows.append("<li>"
-						+ "<h4>" 
+					var list = $("<li></li>");
+					// Mail is unread when adding a new email item
+					list.addClass("unread");
+					list.append("<h4>" 
 						+ "<span class='sender'>" + mail.sender + "</span>"
 						+ "---" 
 						+ "<span class='subject'>" + mail.subject + "</span>"
@@ -30,8 +39,10 @@
 						+ "<div><p>" 
 						+ mail.body 
 						+ "</p></div>"
-						+ "</li>"
 					);
+
+					// Most recent emails are displayed at the top
+					sectionRows.prepend(list);
 				}
 
 				function populateRows() {
@@ -103,10 +114,16 @@
 					setTimeout(generateMessages, 3000);
 				}
 
+				function readMail() {
+					var item = $(this); // li.unread h4
+					item.parent().removeClass("unread").addClass("read");
+				}
+
 				getInboxTotal();
 				populateRows();
 				initAccordions();
 				setTimeout(generateMessages, 3000);
+				$(".sectionContent ul").on("click", "li.unread h4", readMail);
 				
 			});
 		</script>
