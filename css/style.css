@@ -1,30 +1,50 @@
-/*section {
-	position: relative;
-	width: 960px;
+/* Layout styles */
+
+body {
+	width: 94%;
+	margin: 10px auto;
+	background-color: #e5e5e5;
+	color: #a44334;
+	border: 5px #6cc5c3 solid;
+	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
+}
+
+header {
+	padding: .5em;
+	background-color: #a44334;
+	color: #b5ffed;
+	border-bottom: 5px #6cc5c3 solid;
 }
 
 #sidebar {
-	position: relative;
 	float: left;
-	width: 202px;
+	width: 160px;
+	padding: 1em;
+	margin: 0;
 }
 
 #main {
-	float: left;
+	margin-left: 180px;
+	border-left: 5px #6cc5c3 solid;
+	padding: 1em;
 }
 
-.sectionTitle {
-	float: left;
-	border-bottom: 1px #e5e5e5 solid;
+footer {
+	clear: both;
+	padding: .5em;
+	margin: 0;
+	border-top: 5px #6cc5c3 solid;
+	background-color: #a44334;
+	color: #b5ffed;
+	font-size: 14px;
 }
 
-.sectionOther {
-	float: right;
+header h1,
+#sidebar h3,
+footer p {
+	padding: 0;
+	margin: 0;
 }
-
-.sectionContent {
-	float: left;
-}*/
 
 
 /* Accordion styles */
@@ -51,6 +71,10 @@
 	font-family: Arial, sans-serif;
 }
 
+.sectionContent .ui-accordion .ui-accordion-content {
+	padding: 0 1.5em;
+}
+
 
 /* Mail item header styles */
 
@@ -72,4 +96,81 @@
 
 .read h4 span {
 	font-weight: normal;
+}
+
+
+/* Media queries */
+
+@media screen and (max-width: 768px) {
+  #sidebar {
+  	float: none;
+  }
+
+  #sidebar {
+  	padding: .3em .5em;
+  }
+
+  #main {
+  	margin-left: 0;
+  	border-left: none;
+  	border-top: 5px #6cc5c3 solid;
+  }
+
+  /* Original padding is: 1em 2.2em */
+  .sectionPanel.ui-accordion .ui-accordion-content {
+		padding: .7em 1.54em;
+	}
+
+	/* Original padding is: 0 1.5em */
+	.sectionContent ul.ui-accordion div.ui-accordion-content {
+		padding: 0 1.05em;
+	}
+}
+
+@media screen and (max-width: 640px) {
+	header h1 {
+		font-size: 27px;
+	}
+
+	#sidebar h3 {
+  	font-size: 18px;
+  }
+
+  .sectionTitle {
+		font-size: 14px;
+	}
+
+	footer,
+	.sectionContent ul li h4 span,
+	.sectionContent ul li div p {
+		font-size: 13px;
+	}
+
+	.sectionPanel.ui-accordion .ui-accordion-content {
+		padding: .5em 1.1em;
+	}
+
+	.sectionContent ul.ui-accordion div.ui-accordion-content {
+		padding: 0 .75em;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	header h1 {
+		font-size: 24px;
+	}
+
+	#sidebar h3 {
+  	font-size: 16px;
+  }
+
+  footer,
+	.sectionContent ul li h4 span,
+	.sectionContent ul li div p {
+		font-size: 12px;
+	}
+
+	.sectionPanel.ui-accordion .ui-accordion-content {
+		padding: .3em .66em;
+	}
 }

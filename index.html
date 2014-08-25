@@ -16,7 +16,7 @@
 
 				// Sort the array by increasing chronological order
 				// Later, as rows are prepended, emails that come later in
-				//   the array (more recent emails) will show up at the top
+				//   the array (most recent emails) will show up at the top
 				gee.sort(function(a, b) {
 					return new Date(a.date) - new Date(b.date);
 				});
@@ -31,9 +31,9 @@
 					list.addClass("unread");
 					list.append("<h4>" 
 						+ "<span class='sender'>" + mail.sender + "</span>"
-						+ "---" 
+						+ "<span>---</span>" 
 						+ "<span class='subject'>" + mail.subject + "</span>"
-						+ "---" 
+						+ "<span>---</span>" 
 						+ "<span class='date'>" + moment(mail.date).format("LL") + "</span>"
 						+ "</h4>"
 						+ "<div><p>" 
@@ -82,7 +82,6 @@
 
 				function refreshInbox() {
 					var mail = gee[gee.length - 1];
-					// console.log(gee.length + " --- " + mail.section);
 					switch(mail.section) {
 						case "important":
 							addRow($("#importantContent ul"), mail);
@@ -132,78 +131,46 @@
 		<header>
 			<h1>GeeMail</h1>
 		</header>
-		<section>
-			<div class="container" id="sidebar">
-				<!-- <span id="compose">Compose</span> -->
-				<h3>Inbox (<span id="inboxTotal"></span>)</h3>
-			</div>
-			<div class="container" id="main">
-
-				<div class="sectionPanel">
-					<!-- Another div wraps around sectionHeader -->
-					<div class"sectionHeader" id="importantHeader">
-						<div class="sectionTitle" id="importantTitle">
-							<span>Important</span>
-						</div>
-						<!-- <div class="sectionOther" id="importantOther">
-							<div>
-								<span id="importantCounts">
-									<b>1</b>-<b>4</b> of <b>8</b>
-								</span>
-							</div>
-							<div id="importantOptions">
-								<span class="shouldBeImage">-</span>
-							</div>
-						</div> -->
-					</div>
-					<div class="sectionContent" id="importantContent">
-						<!-- Another div wraps around ul -->
-					</div>
-				</div>
-
-				<div class="sectionPanel">
-					<div class"sectionHeader" id="starredHeader">
-						<div class="sectionTitle" id="starredTitle">
-							<span>Starred</span>
-						</div>
-						<!-- <div class="sectionOther" id="starredOther">
-							<div>
-								<span id="starredCounts">
-									<b>1</b>-<b>4</b> of <b>8</b>
-								</span>
-							</div>
-							<div id="starredOptions">
-								<span class="shouldBeImage">-</span>
-							</div>
-						</div> -->
-					</div>
-					<div class="sectionContent" id="starredContent">
-					</div>
-				</div>
-
-				<div class="sectionPanel">
-					<div class"sectionHeader" id="allElseHeader">
-						<div class="sectionTitle" id="allElseTitle">
-							<span>Everything else</span>
-						</div>
-						<!-- <div class="sectionOther" id="allElseOther">
-							<div>
-								<span id="allElseCounts">
-									<b>1</b>-<b>4</b> of <b>8</b>
-								</span>
-							</div>
-							<div id="allElseOptions">
-								<span class="shouldBeImage">-</span>
-							</div>
-						</div> -->
-					</div>
-					<div class="sectionContent" id="otherContent">
-					</div>
-				</div>
-
-			</div>
+		
+		<section id="sidebar">
+			<h3>Inbox (<span id="inboxTotal"></span>)</h3>
 		</section>
+		<section id="main">
+
+			<div class="sectionPanel">
+				<div class"sectionHeader" id="importantHeader">
+					<div class="sectionTitle" id="importantTitle">
+						<span>Important</span>
+					</div>
+				</div>
+				<div class="sectionContent" id="importantContent">
+				</div>
+			</div>
+
+			<div class="sectionPanel">
+				<div class"sectionHeader" id="starredHeader">
+					<div class="sectionTitle" id="starredTitle">
+						<span>Starred</span>
+					</div>
+				</div>
+				<div class="sectionContent" id="starredContent">
+				</div>
+			</div>
+
+			<div class="sectionPanel">
+				<div class"sectionHeader" id="allElseHeader">
+					<div class="sectionTitle" id="allElseTitle">
+						<span>Everything else</span>
+					</div>
+				</div>
+				<div class="sectionContent" id="otherContent">
+				</div>
+			</div>
+
+		</section>
+		
 		<footer>
+			<p>Disclaimer: For educational purposes only.  Google does not endorse this app.  Gmail is cool.</p>
 		</footer>
 	</body>
 </html>
