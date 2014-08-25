@@ -31,10 +31,10 @@
 					list.addClass("unread");
 					list.append("<h4>" 
 						+ "<span class='sender'>" + mail.sender + "</span>"
-						+ "<span>---</span>" 
+						+ "<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>"
 						+ "<span class='subject'>" + mail.subject + "</span>"
-						+ "<span>---</span>" 
-						+ "<span class='date'>" + moment(mail.date).format("LL") + "</span>"
+						+ "<span>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</span>"
+						+ "<span class='date'>" + moment(mail.date).format("ll") + "</span>"
 						+ "</h4>"
 						+ "<div><p>" 
 						+ mail.body 
@@ -135,38 +135,29 @@
 		<section id="sidebar">
 			<h3>Inbox (<span id="inboxTotal"></span>)</h3>
 		</section>
-		<section id="main">
 
+		<section id="main">
 			<div class="sectionPanel">
-				<div class"sectionHeader" id="importantHeader">
-					<div class="sectionTitle" id="importantTitle">
-						<span>Important</span>
-					</div>
+				<div class="sectionTitle">
+					<span>Important</span>
 				</div>
 				<div class="sectionContent" id="importantContent">
 				</div>
 			</div>
-
 			<div class="sectionPanel">
-				<div class"sectionHeader" id="starredHeader">
-					<div class="sectionTitle" id="starredTitle">
-						<span>Starred</span>
-					</div>
+				<div class="sectionTitle">
+					<span>Starred</span>
 				</div>
 				<div class="sectionContent" id="starredContent">
 				</div>
 			</div>
-
 			<div class="sectionPanel">
-				<div class"sectionHeader" id="allElseHeader">
-					<div class="sectionTitle" id="allElseTitle">
-						<span>Everything else</span>
-					</div>
+				<div class="sectionTitle">
+					<span>Everything else</span>
 				</div>
 				<div class="sectionContent" id="otherContent">
 				</div>
 			</div>
-
 		</section>
 		
 		<footer>

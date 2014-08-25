@@ -3,29 +3,28 @@
 body {
 	width: 94%;
 	margin: 10px auto;
-	background-color: #e5e5e5;
-	color: #a44334;
-	border: 5px #6cc5c3 solid;
+	background-color: #fafaff;
 	font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
 }
 
 header {
 	padding: .5em;
-	background-color: #a44334;
+	background-color: #333333;
 	color: #b5ffed;
-	border-bottom: 5px #6cc5c3 solid;
 }
 
 #sidebar {
 	float: left;
 	width: 160px;
-	padding: 1em;
+	padding: 1em .1em 1em 1em;
 	margin: 0;
+	border-right: 2px #6cc5c3 dashed;
+	border-bottom: 2px #6cc5c3 dashed;
+	color: #2e4259;
 }
 
 #main {
 	margin-left: 180px;
-	border-left: 5px #6cc5c3 solid;
 	padding: 1em;
 }
 
@@ -33,9 +32,9 @@ footer {
 	clear: both;
 	padding: .5em;
 	margin: 0;
-	border-top: 5px #6cc5c3 solid;
-	background-color: #a44334;
-	color: #b5ffed;
+	border-top: 2px #6cc5c3 dashed;
+	background-color: #edf4fd;
+	color: #94A0B0;
 	font-size: 14px;
 }
 
@@ -46,10 +45,14 @@ footer p {
 	margin: 0;
 }
 
+#inboxTotal {
+	color: #be1623;
+}
+
 
 /* Accordion styles */
 
-.sectionTitle h3,
+.sectionTitle span,
 .sectionContent ul li h4 {
 	cursor: pointer;
 }
@@ -78,20 +81,13 @@ footer p {
 
 /* Mail item header styles */
 
-/*.sender {
-
+.unread h4 span.sender {
+	color: #be1623;
 }
 
-.subject {
-
-}
-
-.date {
-
-}*/
-
-.unread h4 span {
-	color: blue;
+.unread h4 span.subject,
+.unread h4 span.date {
+	color: #2e4259;
 }
 
 .read h4 span {
@@ -108,12 +104,13 @@ footer p {
 
   #sidebar {
   	padding: .3em .5em;
+  	border-right: none;
+  	border-bottom: none;
   }
 
   #main {
   	margin-left: 0;
-  	border-left: none;
-  	border-top: 5px #6cc5c3 solid;
+  	border-top: 2px #6cc5c3 dashed;
   }
 
   /* Original padding is: 1em 2.2em */
